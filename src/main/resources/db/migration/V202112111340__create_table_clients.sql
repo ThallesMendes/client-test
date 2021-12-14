@@ -6,7 +6,6 @@ CREATE TABLE public.clients
     document character varying(40) NOT NULL,
     phone character varying(20) NOT NULL,
     email character varying(60),
-    active boolean DEFAULT true,
     deleted boolean DEFAULT false,
     created_at timestamp with time zone NOT NULL,
     updated_at timestamp with time zone,
