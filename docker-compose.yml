@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    image: spring-boot-image
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - client-net
+    ports:
+      - 8080:8080
+  db:
+    image: postgres:latest
+    container_name: "db"
+    networks:
+      - client-net
+    environment:
+      POSTGRES_DB: client
+      POSTGRES_USER: client
+      POSTGRES_PASSWORD: client
+    ports:
+      - "5433:5432"
+networks:
+  client-net:
+    driver: bridge
